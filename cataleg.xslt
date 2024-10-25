@@ -10,12 +10,16 @@
       <th style="text-align:left">Artist</th>
       <th style="text-align:left">Price</th>
     </tr>
-    <xsl:for-each select="catalog/cd[price &lt;10]">
+    <xsl:for-each select="catalog/cd">
+    <xsl:if test="price &gt; 10">
     <tr>
       <td><xsl:value-of select="title"/></td>
       <td><xsl:value-of select="artist"/></td>
       <td><xsl:value-of select="price"/></td>
+      <td><xsl:value-of select="'&#128308;'"/></td>
     </tr>
+    </xsl:if>
+
     </xsl:for-each>
   </table>
 </body>
