@@ -5,25 +5,31 @@
 <body>
   <h2>My CD Collection</h2>
   <table border="1">
-    <tr bgcolor="green">
+    <tr bgcolor="lightgrey">
       <th style="text-align:left">Title</th>
       <th style="text-align:left">Artist</th>
       <th style="text-align:left">Price</th>
+      <th style="text-align:left">Status</th>
     </tr>
     <xsl:for-each select="catalog/cd">
-    <xsl:if test="price &gt; 10">
-    <tr>
-      <td><xsl:value-of select="title"/></td>
-      <td><xsl:value-of select="artist"/></td>
-      <td><xsl:value-of select="price"/></td>
-      <td><xsl:value-of select="'&#128308;'"/></td>
-    </tr>
-    </xsl:if>
-
+      <tr>
+        <td><xsl:value-of select="title"/></td>
+        <td><xsl:value-of select="artist"/></td>
+        <td><xsl:value-of select="price"/></td>
+        <td>
+          <xsl:choose>
+            <xsl:when test="price &lt; 10">
+              <span style="color:red">&#128308;</span> <!-- Punto rojo -->
+            </xsl:when>
+            <xsl:otherwise>
+              <span style="color:green">&#128994;</span> <!-- Punto verde -->
+            </xsl:otherwise>
+          </xsl:choose>
+        </td>
+      </tr>
     </xsl:for-each>
   </table>
 </body>
 </html>
 </xsl:template>
 </xsl:stylesheet>
-
