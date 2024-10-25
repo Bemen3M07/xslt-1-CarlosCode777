@@ -17,14 +17,12 @@
         <td><xsl:value-of select="artist"/></td>
         <td><xsl:value-of select="price"/></td>
         <td>
-          <xsl:choose>
-            <xsl:when test="price &lt; 10">
-              <span style="color:red">&#128308;</span> <!-- Punto rojo -->
-            </xsl:when>
-            <xsl:otherwise>
-              <span style="color:green">&#128994;</span> <!-- Punto verde -->
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:if test="price &lt; 10">
+            &#128308;
+          </xsl:if>
+          <xsl:if test="price &gt;= 10">
+            &#128994;
+          </xsl:if>
         </td>
       </tr>
     </xsl:for-each>
